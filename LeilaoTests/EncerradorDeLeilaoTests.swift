@@ -34,13 +34,12 @@ class EncerradorDeLeilaoTests: XCTestCase {
         let encerradorDeLeilao = EncerradorDeLeilao()
         encerradorDeLeilao.encerra()
         
+        // Pegamos od leilões encerrados e verificamos quantos são
         let leiloesEncerrados = dao.encerrados()
+        XCTAssertEqual(2, leiloesEncerrados.count, "Aquantidade de leilões encerrados não é a esperada.")
         
         // Verificamos se esses leilões de data antiga foram encerrados
-        guard let statusTvLed = tvLed.isEncerrado() else { return }
-        guard let statusGeradeira = geladeira.isEncerrado() else { return }
-        
-        XCTAssertTrue(statusTvLed)
-        XCTAssertTrue(statusGeradeira)
+        XCTAssertTrue(leiloesEncerrados[0].isEncerrado()!)
+        XCTAssertTrue(leiloesEncerrados[1].isEncerrado()!)
     }
 }

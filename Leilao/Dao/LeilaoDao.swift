@@ -67,6 +67,7 @@ class LeilaoDao: NSObject {
     private func porEncerrado(_ status:Bool) -> [Leilao] {
         let statusLeilao = status ? 1 : 0
         let sql = "select * from LEILAO where encerrado = \(statusLeilao)"
+//        let sql = "delete from LEILAO where encerrado = \(statusLeilao)"
         var resultado : OpaquePointer? = nil
         var listaDeLeilao:[Leilao] = []
         if (sqlite3_prepare_v2(dataBase, sql, -1, &resultado, nil) == SQLITE_OK) {
