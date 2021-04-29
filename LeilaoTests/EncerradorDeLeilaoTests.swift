@@ -26,12 +26,12 @@ class EncerradorDeLeilaoTests: XCTestCase {
         let geladeira = CriadorDeLeilao().para(descricao: "Geladeira").naData(data: dataAntiga).constroi()
         
         // Gravamos os leilões no banco de dados
-        let dao = LeilaoDao()
+        let dao = LeilaoDaoFalso()
         dao.salva(tvLed)
         dao.salva(geladeira)
         
         // Rodamos o encerrador de leilões
-        let encerradorDeLeilao = EncerradorDeLeilao()
+        let encerradorDeLeilao = EncerradorDeLeilao(dao)
         encerradorDeLeilao.encerra()
         
         // Pegamos od leilões encerrados e verificamos quantos são
