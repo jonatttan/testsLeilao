@@ -39,7 +39,7 @@ class EncerradorDeLeilaoTests: XCTestCase {
         // Após implementar o stub, orientamos o mock a chamar da classe concreta/ verdadeira os métodos que não estão no stub
         daoFalso.withEnabledSuperclassSpy() // Pode ser também implementado na instência, com "let daoFalso.width..."
         
-        // Rodamos o encerrador de leilões
+        // Rodamos o encerrador de leilões, nesse ponto ocorre a injeção de dependência.
         let encerradorDeLeilao = EncerradorDeLeilao(daoFalso)
         encerradorDeLeilao.encerra()
         
